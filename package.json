@@ -17,5 +17,8 @@
         "tailwindcss": "^3.2.1",
         "vite": "^4.0.0",
         "vue": "^3.2.41"
+    },
+    "dependencies": {
+        "pluralize": "^8.0.0"
     }
 }
