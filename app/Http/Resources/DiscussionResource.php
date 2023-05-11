@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TopicResource extends JsonResource
+class DiscussionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,11 @@ class TopicResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return $this->only('id', 'title', 'slug');
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'topic' => TopicResource::make($this->whenLoaded('topic'))
+        ];
     }
 }
