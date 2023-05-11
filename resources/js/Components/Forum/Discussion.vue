@@ -14,6 +14,9 @@
                     </h1>
                 </div>
 
+                <div class="text-gray-500 text-sm mt-3 line-clamp-1">
+                    {{ discussion.post.body_preview }}
+                </div>
             </div>
             <div>
                 avatars

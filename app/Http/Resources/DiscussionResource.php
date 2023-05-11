@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class DiscussionResource extends JsonResource
 {
@@ -20,6 +21,7 @@ class DiscussionResource extends JsonResource
             'slug' => $this->slug,
             'is_pinned' => $this->isPinned(),
             'topic' => TopicResource::make($this->whenLoaded('topic')),
+            'post' => PostResource::make($this->whenLoaded('post')),
         ];
     }
 }
