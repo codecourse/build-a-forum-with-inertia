@@ -9,7 +9,7 @@
                 <div class="text-sm text-gray-500">Posted <time :datetime="post.created_at.datetime" :title="post.created_at.datetime">{{ post.created_at.human }}</time></div>
             </div>
             <div class="mt-3">
-                {{ post.body }}
+                <div v-html="post.body_markdown" class="markdown"></div>
             </div>
         </div>
     </div>
