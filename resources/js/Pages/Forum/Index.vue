@@ -33,7 +33,7 @@ defineProps({
             <div class="space-y-3">
                 <template v-if="discussions.data.length">
                     <Discussion v-for="discussion in discussions.data" :key="discussion.id" :discussion="discussion" />
-                    <Pagination :pagination="discussions.meta" />
+                    <Pagination class="!mt-6" :pagination="discussions.meta" />
                 </template>
             </div>
         </div>
