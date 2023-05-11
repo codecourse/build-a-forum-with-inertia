@@ -1,6 +1,7 @@
 <script setup>
 import ForumLayout from '@/Layouts/ForumLayout.vue';
 import Select from '@/Components/Select.vue';
+import Pagination from '@/Components/Pagination.vue';
 import Discussion from '@/Components/Forum/Discussion.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import { Head } from '@inertiajs/vue3';
@@ -30,7 +31,10 @@ defineProps({
             </div>
 
             <div class="space-y-3">
-                <Discussion v-for="discussion in discussions.data" :key="discussion.id" :discussion="discussion" />
+                <template v-if="discussions.data.length">
+                    <Discussion v-for="discussion in discussions.data" :key="discussion.id" :discussion="discussion" />
+                    <Pagination :pagination="discussions.meta" />
+                </template>
             </div>
         </div>
 
