@@ -41,7 +41,7 @@
 
         <template v-slot:button>
             <PrimaryButton>
-                Create discussion
+                Start discussion
             </PrimaryButton>
         </template>
     </FixedFormWrapper>
