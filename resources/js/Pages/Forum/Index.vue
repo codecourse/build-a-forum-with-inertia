@@ -8,7 +8,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import { Head } from '@inertiajs/vue3';
 
 defineProps({
-    discussions: Object
+    discussions: Object,
+    query: Object
 })
 </script>
 
@@ -40,7 +41,7 @@ defineProps({
         </div>
 
         <template #side>
-            <Navigation />
+            <Navigation :query="query" />
         </template>
     </ForumLayout>
 </template>
