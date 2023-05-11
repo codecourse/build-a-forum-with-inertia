@@ -5,14 +5,18 @@ import Pagination from '@/Components/Pagination.vue';
 import Navigation from '@/Components/Forum/Navigation.vue';
 import Discussion from '@/Components/Forum/Discussion.vue';
 import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, router } from '@inertiajs/vue3';
 import _omitBy from 'lodash.omitby'
 import _isEmpty from 'lodash.isempty'
+import useCreateDiscussion from '@/Composables/useCreateDiscussion';
 
 defineProps({
     discussions: Object,
     query: Object
 })
+
+const { showCreateDiscussionForm } = useCreateDiscussion()
 
 const filterTopic = (e) => {
     router.visit('/', {
@@ -57,6 +61,9 @@ const filterTopic = (e) => {
         </div>
 
         <template #side>
+            <PrimaryButton v-on:click="showCreateDiscussionForm" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">
+                Start a discussion
+            </PrimaryButton>
             <Navigation :query="query" />
         </template>
     </ForumLayout>
