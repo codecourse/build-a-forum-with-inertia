@@ -45,4 +45,10 @@ class Discussion extends Model
         return $this->hasOne(Post::class)
             ->latestOfMany();
     }
+
+    public function participants()
+    {
+        return $this->hasManyThrough(User::class, Post::class, 'discussion_id', 'id', 'id', 'user_id')
+            ->distinct();
+    }
 }

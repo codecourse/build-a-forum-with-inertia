@@ -22,8 +22,10 @@
                     Last post by {{ discussion.latest_post.user.username }} <time :datetime="discussion.latest_post.created_at.datetime" :title="discussion.latest_post.created_at.datetime">{{ discussion.latest_post.created_at.human }}</time>
                 </Link>
             </div>
-            <div>
-                avatars
+            <div class="flex-shrink-0">
+                <div class="flex items-center justify-start -space-x-1">
+                    <img :src="participant.avatar_url" v-for="participant in discussion.participants" :key="participant.id" class="h-6 w-6 rounded-full ring-2 ring-white first-of-type:w-7 first-of-type:h-7" :title="participant.username">
+                </div>
             </div>
         </div>
     </Link>
