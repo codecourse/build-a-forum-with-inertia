@@ -3,3 +3,6 @@
         <slot />
     </select>
 </template>
+
+<script setup>
+</script>

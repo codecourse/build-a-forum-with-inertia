@@ -12,26 +12,30 @@
                 <div class="flex-grow">
                     <div>
                         <InputLabel for="title" value="Title" class="sr-only" />
-                        <TextInput id="title" type="text" class="w-full" />
-                        <!-- <InputError class="mt-2" /> -->
+                        <TextInput id="title" type="text" class="w-full" placeholder="Discussion title" v-model="form.title" />
+                        <InputError class="mt-2" :message="form.errors.title" />
                     </div>
                 </div>
                 <div>
-                    <Select id="topic">
+                    <InputLabel for="topic" value="Topic" class="sr-only" />
+                    <select id="topic" v-model="form.topic_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         <option value="">Choose a topic</option>
                         <option
-                            :value="topic.slug"
+                            :value="topic.id"
                             v-for="topic in $page.props.topics"
                             :key="topic.id"
                         >
                             {{ topic.title }}
                         </option>
-                    </Select>
+                    </select>
+                    <InputError class="mt-2" :message="form.errors.topic_id" />
                 </div>
             </div>
 
             <div class="mt-4">
-                <Textarea class="w-full" rows="6" />
+                <InputLabel for="body" value="Body" class="sr-only" />
+                <Textarea class="w-full" rows="6" v-model="form.body" />
+                <InputError class="mt-2" :message="form.errors.body" />
             </div>
         </template>
 
@@ -53,5 +57,5 @@ import Textarea from '../Textarea.vue';
 import Select from '../Select.vue';
 import useCreateDiscussion from '@/Composables/useCreateDiscussion';
 
-const { visible, hideCreateDiscussionForm } = useCreateDiscussion()
+const { visible, hideCreateDiscussionForm, form } = useCreateDiscussion()
 </script>
