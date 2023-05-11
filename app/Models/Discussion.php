@@ -4,10 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Discussion extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug'
+    ];
+
+    protected static function booted()
+    {
+        static::created(function ($discussion) {
+            $discussion->update(['slug' => $discussion->title]);
+        });
+    }
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = $this->id . '-' . Str::slug($value);
+    }
 
     public function scopeOrderByPinned($query)
     {

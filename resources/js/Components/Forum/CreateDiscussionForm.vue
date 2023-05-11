@@ -1,5 +1,5 @@
 <template>
-    <FixedFormWrapper v-if="visible">
+    <FixedFormWrapper v-if="visible" v-on:submit.prevent="createDiscussion">
         <template v-slot:header>
             <div class="flex items-center justify-between">
                 <h1 class="text-lg font-medium">New discussion</h1>
@@ -58,4 +58,14 @@ import Select from '../Select.vue';
 import useCreateDiscussion from '@/Composables/useCreateDiscussion';
 
 const { visible, hideCreateDiscussionForm, form } = useCreateDiscussion()
+
+const createDiscussion = () => {
+    form.post(route('discussions.store'), {
+        onSuccess: () => {
+            form.reset()
+            hideCreateDiscussionForm()
+        }
+    })
+}
+
 </script>
