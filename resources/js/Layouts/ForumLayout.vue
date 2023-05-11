@@ -9,8 +9,11 @@
             </div>
         </div>
     </AuthenticatedLayout>
+
+    <CreateDiscussionForm />
 </template>
 
 <script setup>
     import AuthenticatedLayout from './AuthenticatedLayout.vue'
+    import CreateDiscussionForm from '@/Components/Forum/CreateDiscussionForm.vue'
 </script>
