@@ -34,7 +34,7 @@
 
             <div class="mt-4">
                 <InputLabel for="body" value="Body" class="sr-only" />
-                <Textarea v-if="!markdownPreviewEnabled" class="w-full h-48 align-top" v-model="form.body" />
+                <Textarea v-if="!markdownPreviewEnabled" id="body" class="w-full h-48 align-top" v-model="form.body" />
                 <InputError class="mt-2" :message="form.errors.body" />
             </div>
         </template>
