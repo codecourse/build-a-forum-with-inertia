@@ -7,13 +7,34 @@ import Navigation from '@/Components/Forum/Navigation.vue';
 import { Head } from '@inertiajs/vue3';
 import pluralize from 'pluralize'
 import useCreatePost from '@/Composables/useCreatePost';
+import { onMounted, onUpdated, nextTick } from 'vue';
+import VueScrollTo from 'vue-scrollto'
 
 const { showCreatePostForm } = useCreatePost()
 
-defineProps({
+const props = defineProps({
     discussion: Object,
     posts: Object,
-    query: Object
+    query: Object,
+    postId: Number
+})
+
+const scrollToPost = (postId) => {
+    if (!postId) {
+        return
+    }
+
+    nextTick(() => {
+        VueScrollTo.scrollTo(`#post-${postId}`, 500, { offset: -50 })
+    })
+}
+
+onMounted(() => {
+    scrollToPost(props.postId)
+})
+
+onUpdated(() => {
+    scrollToPost(props.postId)
 })
 </script>
 

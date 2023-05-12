@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class DiscussionShowController extends Controller
 {
-    protected const POSTS_PER_PAGE = 2;
+    protected const POSTS_PER_PAGE = 5;
 
     public function __invoke(Request $request, Discussion $discussion)
     {
@@ -34,6 +34,7 @@ class DiscussionShowController extends Controller
                     ->oldest()
                     ->paginate(self::POSTS_PER_PAGE)
             ),
+            'postId' => (int) $request->postId,
         ]);
     }
 
