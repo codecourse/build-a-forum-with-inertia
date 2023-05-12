@@ -48,7 +48,7 @@ defineProps({
         </div>
 
         <template #side>
-            <PrimaryButton v-on:click="showCreatePostForm(discussion)" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">
+            <PrimaryButton v-on:click="showCreatePostForm(discussion)" class="w-full flex justify-center h-10" v-if="discussion.user_can.reply">
                 Reply to discussion
             </PrimaryButton>
             <Navigation :query="query" />

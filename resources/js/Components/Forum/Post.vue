@@ -11,11 +11,21 @@
             <div class="mt-3">
                 <div v-html="post.body_markdown" class="markdown"></div>
             </div>
+
+            <ul class="flex items-center space-x-3 mt-6">
+                <li v-if="post.discussion.user_can.reply">
+                    <button v-on:click="showCreatePostForm(post.discussion)" class="text-indigo-500 text-sm">Reply</button>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
 
 <script setup>
+import useCreatePost from '@/Composables/useCreatePost';
+
+const { showCreatePostForm } = useCreatePost()
+
 defineProps({
     post: Object
 })
