@@ -1,10 +1,14 @@
 <script setup>
 import ForumLayout from '@/Layouts/ForumLayout.vue';
 import Pagination from '@/Components/Pagination.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Post from '@/Components/Forum/Post.vue';
 import Navigation from '@/Components/Forum/Navigation.vue';
 import { Head } from '@inertiajs/vue3';
 import pluralize from 'pluralize'
+import useCreatePost from '@/Composables/useCreatePost';
+
+const { showCreatePostForm } = useCreatePost()
 
 defineProps({
     discussion: Object,
@@ -44,6 +48,9 @@ defineProps({
         </div>
 
         <template #side>
+            <PrimaryButton v-on:click="showCreatePostForm(discussion)" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">
+                Reply to discussion
+            </PrimaryButton>
             <Navigation :query="query" />
         </template>
     </ForumLayout>

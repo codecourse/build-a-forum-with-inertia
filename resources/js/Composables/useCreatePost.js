@@ -2,26 +2,27 @@ import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 
 const visible = ref(false)
+const discussion = ref(null)
 
 const form = useForm({
-    topic_id: '',
-    title: '',
     body: '',
 })
 
 export default () => {
-    const showCreateDiscussionForm = () => {
+    const showCreatePostForm = (discussionContext) => {
+        discussion.value = discussionContext
         visible.value = true
     }
 
-    const hideCreateDiscussionForm = () => {
+    const hideCreatePostForm = () => {
         visible.value = false
     }
 
     return {
         form,
         visible,
-        showCreateDiscussionForm,
-        hideCreateDiscussionForm
+        showCreatePostForm,
+        hideCreatePostForm,
+        discussion
     }
 }
