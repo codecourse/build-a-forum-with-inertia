@@ -3,6 +3,7 @@
 use App\Http\Controllers\DiscussionShowController;
 use App\Http\Controllers\DiscussionStoreController;
 use App\Http\Controllers\ForumIndexController;
+use App\Http\Controllers\MarkdownController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::get('/', function () {
 
 Route::get('/', ForumIndexController::class)->name('home');
 Route::get('/discussions/{discussion:slug}', DiscussionShowController::class)->name('discussions.show');
+
+Route::post('/markdown', MarkdownController::class)->name('markdown');
 
 Route::middleware('auth')->group(function () {
     Route::post('/discussions', DiscussionStoreController::class)->name('discussions.store');
