@@ -18,7 +18,7 @@
                     {{ discussion.post.body_preview }}
                 </div>
 
-                <Link :href="route('discussions.show', discussion)" class="inline-block text-sm mt-3">
+                <Link :href="`${route('discussions.show', discussion)}?post=${discussion.latest_post.id}`" class="inline-block text-sm mt-3">
                     Last post by {{ discussion.latest_post.user?.username || '[user deleted]' }} <time :datetime="discussion.latest_post.created_at.datetime" :title="discussion.latest_post.created_at.datetime">{{ discussion.latest_post.created_at.human }}</time>
                 </Link>
             </div>

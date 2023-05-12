@@ -19,6 +19,6 @@ class PostStoreController extends Controller
 
         $post->save();
 
-        return redirect()->route('discussions.show', $discussion);
+        return redirect(route('discussions.show', $discussion) . '?post=' . $post->id);
     }
 }

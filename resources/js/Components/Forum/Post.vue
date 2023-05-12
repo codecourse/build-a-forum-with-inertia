@@ -1,5 +1,8 @@
 <template>
-    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 flex items-start space-x-3">
+    <div
+        :id="`post-${post.id}`"
+        class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 flex items-start space-x-3"
+    >
         <div class="w-7 flex-shrink-0">
             <img :src="post.user?.avatar_url" class="w-7 h-7 rounded-full" v-if="post.user">
         </div>
