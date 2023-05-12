@@ -12,7 +12,7 @@
                 <div class="text-sm text-gray-500">Posted <time :datetime="post.created_at.datetime" :title="post.created_at.datetime">{{ post.created_at.human }}</time></div>
             </div>
             <div class="mt-3">
-                <form v-if="editing">
+                <form v-on:submit.prevent="editPost" v-if="editing">
                     <InputLabel for="body" value="Body" class="sr-only" />
                     <Textarea v-model="editForm.body" id="body" class="w-full" rows="8" />
                     <InputError class="mt-2" :message="editForm.errors.body" />
@@ -58,4 +58,11 @@ const editing = ref(false)
 const editForm = useForm({
     body: props.post.body
 })
+
+const editPost = () => {
+    editForm.patch(route('posts.patch', props.post), {
+        preserveScroll: true,
+        onSuccess: () => { editing.value = false }
+    })
+}
 </script>

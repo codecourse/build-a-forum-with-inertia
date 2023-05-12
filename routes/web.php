@@ -4,6 +4,7 @@ use App\Http\Controllers\DiscussionShowController;
 use App\Http\Controllers\DiscussionStoreController;
 use App\Http\Controllers\ForumIndexController;
 use App\Http\Controllers\MarkdownController;
+use App\Http\Controllers\PostPatchController;
 use App\Http\Controllers\PostStoreController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -38,6 +39,8 @@ Route::post('/markdown', MarkdownController::class)->name('markdown');
 Route::middleware('auth')->group(function () {
     Route::post('/discussions', DiscussionStoreController::class)->name('discussions.store');
     Route::post('/discussions/{discussion}/posts', PostStoreController::class)->name('posts.store');
+
+    Route::patch('/posts/{post}', PostPatchController::class)->name('posts.patch');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
