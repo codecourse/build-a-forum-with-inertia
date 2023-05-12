@@ -7,7 +7,7 @@
             </div>
         </template>
 
-        <template v-slot:main>
+        <template v-slot:main="{ markdownPreviewEnabled }">
             <div class="flex items-start space-x-3">
                 <div class="flex-grow">
                     <div>
@@ -34,7 +34,7 @@
 
             <div class="mt-4">
                 <InputLabel for="body" value="Body" class="sr-only" />
-                <Textarea class="w-full" rows="6" v-model="form.body" />
+                <Textarea v-if="!markdownPreviewEnabled" class="w-full h-48 align-top" v-model="form.body" />
                 <InputError class="mt-2" :message="form.errors.body" />
             </div>
         </template>
