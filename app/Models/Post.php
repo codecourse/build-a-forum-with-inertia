@@ -22,4 +22,9 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function parent()
+    {
+        return $this->belongsTo(Post::class, 'parent_id');
+    }
 }
