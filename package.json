@@ -23,6 +23,7 @@
         "lodash.isempty": "^4.4.0",
         "lodash.omitby": "^4.6.0",
         "pluralize": "^8.0.0",
-        "shiki": "^0.14.2"
+        "shiki": "^0.14.2",
+        "vite-svg-loader": "^4.0.0"
     }
 }
