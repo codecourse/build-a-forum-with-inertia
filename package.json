@@ -20,12 +20,14 @@
     },
     "dependencies": {
         "@github/markdown-toolbar-element": "^2.1.1",
+        "floating-vue": "^2.0.0-beta.20",
         "lodash.debounce": "^4.0.8",
         "lodash.isempty": "^4.4.0",
         "lodash.omitby": "^4.6.0",
         "pluralize": "^8.0.0",
         "shiki": "^0.14.2",
         "vite-svg-loader": "^4.0.0",
+        "vue-mention": "^2.0.0-alpha.3",
         "vue-scrollto": "^2.20.0"
     }
 }

@@ -36,7 +36,9 @@
 
             <div class="mt-4">
                 <InputLabel for="body" value="Body" class="sr-only" />
-                <Textarea v-if="!markdownPreviewEnabled" id="body" class="w-full h-48 align-top" v-model="form.body" />
+                <Mentionable :keys="['@']" offset="6" :items="[{ label: 'Alex (@alex)', value: 'alex' }, { label: 'Alexander (@alexander)', value: 'alexander' }, { label: 'Mabel (@mabel)', value: 'mabel' }]" v-if="!markdownPreviewEnabled">
+                    <Textarea id="body" class="w-full h-48 align-top" v-model="form.body" />
+                </Mentionable>
                 <InputError class="mt-2" :message="form.errors.body" />
             </div>
         </template>
@@ -59,6 +61,7 @@ import Textarea from '../Textarea.vue';
 import Select from '../Select.vue';
 import useCreateDiscussion from '@/Composables/useCreateDiscussion';
 import Svg from '../Svg.vue';
+import { Mentionable } from 'vue-mention'
 
 const { visible, hideCreateDiscussionForm, form } = useCreateDiscussion()
 

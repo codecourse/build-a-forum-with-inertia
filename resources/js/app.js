@@ -1,6 +1,7 @@
 import './bootstrap';
 import '../css/app.css';
 import '@github/markdown-toolbar-element'
+import 'floating-vue/dist/style.css'
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
