@@ -25,8 +25,8 @@ class PostResource extends JsonResource
             'discussion' => DiscussionResource::make($this->whenLoaded('discussion')),
             'created_at' => DateTimeResource::make($this->created_at),
             'user_can' => [
-                'edit' => auth()->user()->can('edit', $this->resource),
-                'delete' => auth()->user()->can('delete', $this->resource),
+                'edit' => auth()->user()?->can('edit', $this->resource),
+                'delete' => auth()->user()?->can('delete', $this->resource),
             ]
         ];
     }
