@@ -10,6 +10,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, router } from '@inertiajs/vue3';
 import _omitBy from 'lodash.omitby'
 import _isEmpty from 'lodash.isempty'
+import _debounce from 'lodash.debounce'
 import useCreateDiscussion from '@/Composables/useCreateDiscussion';
 import { ref, watch } from 'vue'
 
@@ -31,11 +32,15 @@ const filterTopic = (e) => {
 
 const searchQuery = ref(props.query.search || '')
 
-watch(searchQuery, (query) => {
+const handleSearchInput = _debounce((query) => {
     router.reload({
         data: { search: query },
         preserveScroll: true
     })
+}, 500)
+
+watch(searchQuery, (query) => {
+    handleSearchInput(query)
 })
 </script>
 
