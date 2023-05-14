@@ -30,7 +30,7 @@
 
             <ul class="flex items-center space-x-3 mt-6">
                 <li v-if="post.discussion.user_can.reply">
-                    <button v-on:click="showCreatePostForm(post.discussion)" class="text-indigo-500 text-sm">Reply</button>
+                    <button v-on:click="showCreatePostForm(post.discussion, post.user)" class="text-indigo-500 text-sm">Reply</button>
                 </li>
                 <li v-if="post.user_can.edit">
                     <button v-on:click="editing = true" class="text-indigo-500 text-sm">Edit</button>
