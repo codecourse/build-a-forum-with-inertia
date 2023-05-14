@@ -21,4 +21,9 @@ class DiscussionPolicy
     {
         return $user->id === $discussion->user_id;
     }
+
+    public function solve(User $user, Discussion $discussion)
+    {
+        return $user->id === $discussion->user_id;
+    }
 }

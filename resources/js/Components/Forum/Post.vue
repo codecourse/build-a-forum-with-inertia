@@ -37,6 +37,9 @@
                 <li v-if="post.user_can.delete">
                     <button v-on:click="deletePost" class="text-indigo-500 text-sm">Delete</button>
                 </li>
+                <li v-if="post.discussion.user_can.solve">
+                    <button class="text-indigo-500 text-sm">Mark best solution</button>
+                </li>
             </ul>
         </div>
     </div>
