@@ -13,6 +13,9 @@
         <md-link class="cursor-pointer py-1.5 px-1">
             <Svg name="icon-link" class="h-5 w-5"></Svg>
         </md-link>
+        <md-mention class="cursor-pointer py-1.5 px-1">
+            <Svg name="icon-at" class="h-5 w-5"></Svg>
+        </md-mention>
     </markdown-toolbar>
 </template>
 
