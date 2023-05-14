@@ -34,6 +34,9 @@
                 <li v-if="post.user_can.edit">
                     <button v-on:click="editing = true" class="text-indigo-500 text-sm">Edit</button>
                 </li>
+                <li v-if="post.user_can.delete">
+                    <button v-on:click="deletePost" class="text-indigo-500 text-sm">Delete</button>
+                </li>
             </ul>
         </div>
     </div>
@@ -47,6 +50,7 @@ import InputLabel from '../InputLabel.vue';
 import InputError from '../InputError.vue';
 import PrimaryButton from '../PrimaryButton.vue';
 import { ref } from 'vue'
+import { router } from '@inertiajs/vue3'
 
 const props = defineProps({
     post: Object
@@ -64,5 +68,13 @@ const editPost = () => {
         preserveScroll: true,
         onSuccess: () => { editing.value = false }
     })
+}
+
+const deletePost = () => {
+    if (window.confirm('Are you sure?')) {
+        router.delete(route('posts.destroy', props.post), {
+            preserveScroll: true
+        })
+    }
 }
 </script>
