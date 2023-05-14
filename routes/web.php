@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiscussionDestroyController;
 use App\Http\Controllers\DiscussionShowController;
+use App\Http\Controllers\DiscussionSolutionPatchController;
 use App\Http\Controllers\DiscussionStoreController;
 use App\Http\Controllers\ForumIndexController;
 use App\Http\Controllers\MarkdownController;
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/discussions', DiscussionStoreController::class)->name('discussions.store');
     Route::post('/discussions/{discussion}/posts', PostStoreController::class)->name('posts.store');
     Route::delete('/discussions/{discussion}', DiscussionDestroyController::class)->name('discussions.destroy');
+    Route::patch('/discussions/{discussion}/solution', DiscussionSolutionPatchController::class)->name('discussions.solution.patch');
 
     Route::patch('/posts/{post}', PostPatchController::class)->name('posts.patch');
     Route::delete('/posts/{post}', PostDestroyController::class)->name('posts.destroy');
