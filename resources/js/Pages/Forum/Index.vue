@@ -1,6 +1,7 @@
 <script setup>
 import ForumLayout from '@/Layouts/ForumLayout.vue';
 import Select from '@/Components/Select.vue';
+import TextInput from '@/Components/TextInput.vue';
 import Pagination from '@/Components/Pagination.vue';
 import Navigation from '@/Components/Forum/Navigation.vue';
 import Discussion from '@/Components/Forum/Discussion.vue';
@@ -10,8 +11,9 @@ import { Head, router } from '@inertiajs/vue3';
 import _omitBy from 'lodash.omitby'
 import _isEmpty from 'lodash.isempty'
 import useCreateDiscussion from '@/Composables/useCreateDiscussion';
+import { ref, watch } from 'vue'
 
-defineProps({
+const props = defineProps({
     discussions: Object,
     query: Object
 })
@@ -26,6 +28,15 @@ const filterTopic = (e) => {
         preserveScroll: true
     })
 }
+
+const searchQuery = ref(props.query.search || '')
+
+watch(searchQuery, (query) => {
+    router.reload({
+        data: { search: query },
+        preserveScroll: true
+    })
+})
 </script>
 
 <template>
@@ -34,7 +45,11 @@ const filterTopic = (e) => {
     <ForumLayout>
         <div class="space-y-6">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6 text-gray-900 flex items-center space-x-3">
+                    <div class="flex-grow">
+                        <InputLabel for="search" value="Search" class="sr-only" />
+                        <TextInput type="search" id="search" class="w-full" v-model="searchQuery" placeholder="Search discussions..." />
+                    </div>
                     <div>
                         <InputLabel for="topic" value="Topic" class="sr-only" />
                         <Select id="topic" v-on:change="filterTopic">
