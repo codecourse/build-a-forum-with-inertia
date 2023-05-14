@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function avatarUrl()
     {
         return 'https://www.gravatar.com/avatar/' . md5($this->email) . '.jpg';
+    }
+
+    public function mention()
+    {
+        return $this->hasOne(UserMention::class, 'id');
     }
 }
