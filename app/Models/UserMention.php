@@ -22,7 +22,7 @@ class UserMention extends Model
     {
         return [
             'value' => $this->username,
-            'label' => $this->name . '(@' . $this->username . ')',
+            'label' => $this->name . ' (@' . $this->username . ')',
         ];
     }
 }

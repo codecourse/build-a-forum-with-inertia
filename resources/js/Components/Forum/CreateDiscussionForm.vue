@@ -36,7 +36,7 @@
 
             <div class="mt-4">
                 <InputLabel for="body" value="Body" class="sr-only" />
-                <Mentionable :keys="['@']" offset="6" :items="[{ label: 'Alex (@alex)', value: 'alex' }, { label: 'Alexander (@alexander)', value: 'alexander' }, { label: 'Mabel (@mabel)', value: 'mabel' }]" v-if="!markdownPreviewEnabled">
+                <Mentionable :keys="['@']" offset="6" v-on:search="mentionSearch" :items="mentionSearchResults" v-if="!markdownPreviewEnabled">
                     <Textarea id="body" class="w-full h-48 align-top" v-model="form.body" />
                 </Mentionable>
                 <InputError class="mt-2" :message="form.errors.body" />
@@ -62,8 +62,10 @@ import Select from '../Select.vue';
 import useCreateDiscussion from '@/Composables/useCreateDiscussion';
 import Svg from '../Svg.vue';
 import { Mentionable } from 'vue-mention'
+import useMentionSearch from '@/Composables/useMentionSearch'
 
 const { visible, hideCreateDiscussionForm, form } = useCreateDiscussion()
+const { mentionSearch, mentionSearchResults } = useMentionSearch()
 
 const createDiscussion = () => {
     form.post(route('discussions.store'), {
@@ -73,5 +75,4 @@ const createDiscussion = () => {
         }
     })
 }
-
 </script>

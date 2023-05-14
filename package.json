@@ -24,6 +24,7 @@
         "lodash.debounce": "^4.0.8",
         "lodash.isempty": "^4.4.0",
         "lodash.omitby": "^4.6.0",
+        "meilisearch": "^0.32.3",
         "pluralize": "^8.0.0",
         "shiki": "^0.14.2",
         "vite-svg-loader": "^4.0.0",
