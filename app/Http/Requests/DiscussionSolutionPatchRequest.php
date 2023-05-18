@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Post;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class DiscussionSolutionPatchRequest extends FormRequest
 {
@@ -22,7 +24,7 @@ class DiscussionSolutionPatchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'post_id' => ['nullable', Rule::exists(Post::class, 'id')]
         ];
     }
 }
